@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Retatrutide product image coming soon">
+  <rect width="800" height="800" fill="#f4f6f5"/>
+  <!-- vial -->
+  <g transform="translate(400 360)" fill="none" stroke="#38A84D" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <!-- cap -->
+    <rect x="-58" y="-190" width="116" height="42" rx="8" fill="#38A84D" stroke="none"/>
+    <rect x="-46" y="-148" width="92" height="24" rx="6" fill="#38A84D" stroke="none" opacity="0.85"/>
+    <!-- body -->
+    <path d="M-62 -124 h124 v250 a40 40 0 0 1 -40 40 h-44 a40 40 0 0 1 -40 -40 z" fill="#ffffff"/>
+    <!-- liquid -->
+    <path d="M-62 40 v86 a40 40 0 0 0 40 40 h44 a40 40 0 0 0 40 -40 v-86 z" fill="#38A84D" opacity="0.15" stroke="none"/>
+    <line x1="-62" y1="40" x2="62" y2="40" stroke="#38A84D" stroke-width="6" opacity="0.4"/>
+  </g>
+  <text x="400" y="600" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="700" fill="#333">Retatrutide</text>
+  <text x="400" y="646" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="500" fill="#8a8f8c">Product image coming soon</text>
+</svg>
