@@ -27,7 +27,7 @@ Pages, or ordinary web hosting. There is nothing to compile.
 
 ### 1. Set your order email  → `assets/js/config.js`
 ```js
-ordersEmail: 'orders@arppeptide.com'   // <-- replace with your real inbox
+ordersEmail: 'Info@arppeptide.com'   // <-- replace with your real inbox
 ```
 This is where every "Order Now" email is sent. Change it once here and the whole site updates.
 

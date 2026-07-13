@@ -10,5 +10,5 @@ window.SITE = {
   // === IMPORTANT ===
   // The email address that customer orders are sent to.
   // Replace the placeholder below with your real order inbox, then save.
-  ordersEmail: 'orders@arppeptide.com'   // TODO: replace with your real order email
+  ordersEmail: 'Info@arppeptide.com'   // TODO: replace with your real order email
 };
