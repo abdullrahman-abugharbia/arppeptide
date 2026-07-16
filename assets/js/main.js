@@ -86,11 +86,56 @@
       '</a>';
   }
 
+  // Paginate a grid that opts in with data-page-size="N"; the nav is inserted
+  // right after the grid and hides itself when everything fits on one page.
+  function paginate(grid, pageSize) {
+    var pages = Math.ceil(PRODUCTS.length / pageSize);
+    var current = 1;
+    var nav = document.createElement('nav');
+    nav.className = 'pagination';
+    nav.setAttribute('aria-label', 'Product pages');
+    grid.insertAdjacentElement('afterend', nav);
+
+    function paintNav() {
+      if (pages < 2) { nav.innerHTML = ''; return; }
+      var html = '<button class="page-btn" data-nav="prev" aria-label="Previous page"' +
+                 (current === 1 ? ' disabled' : '') + '>&larr;</button>';
+      for (var p = 1; p <= pages; p++) {
+        html += '<button class="page-btn' + (p === current ? ' is-active' : '') + '"' +
+                ' data-page="' + p + '"' + (p === current ? ' aria-current="page"' : '') +
+                '>' + p + '</button>';
+      }
+      html += '<button class="page-btn" data-nav="next" aria-label="Next page"' +
+              (current === pages ? ' disabled' : '') + '>&rarr;</button>';
+      nav.innerHTML = html;
+    }
+
+    function show(page) {
+      current = Math.min(Math.max(1, page), pages);
+      var start = (current - 1) * pageSize;
+      grid.innerHTML = PRODUCTS.slice(start, start + pageSize).map(cardHtml).join('');
+      paintNav();
+    }
+
+    nav.addEventListener('click', function (e) {
+      var btn = e.target.closest('.page-btn');
+      if (!btn || btn.disabled) return;
+      var nav_ = btn.getAttribute('data-nav');
+      if (nav_ === 'prev') show(current - 1);
+      else if (nav_ === 'next') show(current + 1);
+      else show(parseInt(btn.getAttribute('data-page'), 10));
+    });
+
+    show(1);
+  }
+
   function renderGrids() {
     var grids = document.querySelectorAll('[data-product-grid]');
-    if (!grids.length) return;
-    var html = PRODUCTS.map(cardHtml).join('');
-    for (var i = 0; i < grids.length; i++) grids[i].innerHTML = html;
+    for (var i = 0; i < grids.length; i++) {
+      var size = parseInt(grids[i].getAttribute('data-page-size'), 10);
+      if (size > 0) paginate(grids[i], size);
+      else grids[i].innerHTML = PRODUCTS.map(cardHtml).join('');
+    }
   }
 
   /* ---- Order Now (mailto) ------------------------------------------------- */
