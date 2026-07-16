@@ -101,8 +101,11 @@ h4 { font-size: 1.02rem; }
   display: flex; align-items: center; justify-content: space-between;
   min-height: 74px; gap: 18px;
 }
-.logo { font-size: 1.32rem; font-weight: 800; letter-spacing: -.02em; color: var(--ink-2); }
-.logo b { color: var(--gold); font-weight: 800; }
+.logo { display: inline-flex; align-items: center; gap: 9px; font-size: 1.32rem; font-weight: 800; letter-spacing: -.02em; color: var(--ink-2); line-height: 1; white-space: nowrap; }
+.logo-mark { height: 2.2em; width: auto; flex-shrink: 0; display: block; }        /* molecule mark, left of the wordmark */
+.logo-text { display: inline-flex; align-items: baseline; }
+.logo .brand-primary { color: var(--gold); font-weight: 800; font-size: 2em; }   /* "ARP" — 2x bigger */
+.logo .brand-secondary { color: var(--ink-2); font-weight: 800; }                 /* "Peptide" */
 .nav { display: flex; align-items: center; gap: 34px; }
 .nav a { color: var(--muted); font-weight: 600; font-size: .875rem; }
 .nav a:hover, .nav a.active { color: var(--gold); }

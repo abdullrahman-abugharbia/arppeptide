@@ -7,6 +7,9 @@ window.SITE = {
   // Brand name shown in the header logo and page titles.
   brand: 'ARP Peptide',
 
+  // Logo mark shown to the left of the wordmark (set to '' to hide it).
+  logoImage: 'assets/img/logo.png',
+
   // === IMPORTANT ===
   // The email address that customer orders are sent to.
   // Replace the placeholder below with your real order inbox, then save.

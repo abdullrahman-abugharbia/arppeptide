@@ -25,13 +25,19 @@
   function applyBrand() {
     var logos = document.querySelectorAll('[data-brand]');
     for (var i = 0; i < logos.length; i++) {
-      // Render "ARP" bold + "Peptide" — split on first space if present.
+      // Render the wordmark "ARPPeptide" (no space) with "ARP" enlarged via CSS.
       var parts = SITE.brand.split(' ');
-      if (parts.length > 1) {
-        logos[i].innerHTML = '<b>' + escapeHtml(parts[0]) + '</b> ' + escapeHtml(parts.slice(1).join(' '));
-      } else {
-        logos[i].textContent = SITE.brand;
-      }
+      var wordmark = parts.length > 1
+        ? '<span class="brand-primary">' + escapeHtml(parts[0]) + '</span>' +
+          '<span class="brand-secondary">' + escapeHtml(parts.slice(1).join(' ')) + '</span>'
+        : escapeHtml(SITE.brand);
+      // The logo image sits to the LEFT of the wordmark — only on the logo lockup,
+      // not the inline copyright line.
+      var isLogo = logos[i].classList.contains('logo');
+      var mark = (isLogo && SITE.logoImage)
+        ? '<img class="logo-mark" src="' + escapeHtml(SITE.logoImage) + '" alt="">'
+        : '';
+      logos[i].innerHTML = mark + '<span class="logo-text">' + wordmark + '</span>';
     }
     var years = document.querySelectorAll('[data-year]');
     for (var y = 0; y < years.length; y++) years[y].textContent = new Date().getFullYear();
