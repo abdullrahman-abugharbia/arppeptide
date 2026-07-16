@@ -195,6 +195,39 @@ h4 { font-size: 1.02rem; }
 }
 .product-card__cta--ghost { background: #241f16; color: var(--ink-2); border: 1px solid #3a3427; }
 
+/* ---------- Search (lives in the nav bar) ---------------------------------- */
+.nav-search { position: relative; width: 208px; flex-shrink: 0; }
+.nav-search input {
+  width: 100%; padding: 9px 32px 9px 34px;
+  background: var(--bg-panel); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); color: var(--ink-2);
+  font-family: var(--font); font-size: .8rem; outline: none;
+  transition: border-color .18s ease, background .18s ease;
+}
+.nav-search input::placeholder { color: var(--muted); }
+.nav-search input:focus { border-color: var(--gold); background: #1e1a14; }
+/* hide the native clear button; we render our own */
+.nav-search input[type="search"]::-webkit-search-cancel-button,
+.nav-search input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.search-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  width: 15px; height: 15px; color: var(--muted); pointer-events: none;
+  transition: color .18s ease;
+}
+.nav-search input:focus ~ .search-icon { color: var(--gold); }
+.search-clear {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; color: var(--muted);
+  font-size: 1rem; line-height: 1; cursor: pointer;
+  transition: color .18s ease, background .18s ease;
+}
+.search-clear:hover { color: var(--gold); background: rgba(229,192,123,.12); }
+.search-count { text-align: center; color: var(--muted); font-size: .8rem; margin: 0 0 26px; min-height: 1.1em; }
+.search-empty { text-align: center; padding: 54px 20px; color: var(--muted); }
+.search-empty h3 { color: var(--ink-2); margin-bottom: .4em; }
+.search-empty p { margin: 0; font-size: .92rem; }
+
 /* ---------- Pagination ----------------------------------------------------- */
 .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 28px; flex-wrap: wrap; }
 .pagination:empty { display: none; }
@@ -293,6 +326,9 @@ h4 { font-size: 1.02rem; }
   .nav a { width: 100%; padding: 14px 26px; }
   .nav-toggle { display: block; order: 3; }
   .header-cta { display: none; }
+  /* no room for search in the bar at this width, so it rides in the dropdown */
+  .nav-search { width: calc(100% - 52px); margin: 8px 26px 10px; }
+  .nav-search input { padding: 12px 34px; font-size: .9rem; }
 }
 @media (max-width: 560px) {
   .container, .wrap { padding: 0 18px; }

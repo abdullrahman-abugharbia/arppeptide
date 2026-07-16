@@ -24,6 +24,12 @@
         <a href="index.html">Home</a>
         <a href="products.html" class="active">Peptides</a>
         <a href="contact.html">Contact</a>
+              <form class="nav-search" role="search" action="products.html" method="get">
+          <!-- input first so the icon can react to :focus via a sibling selector -->
+          <input type="search" name="q" data-product-search placeholder="Search peptides&hellip;" aria-label="Search peptides" autocomplete="off">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <button type="button" class="search-clear" data-search-clear aria-label="Clear search" hidden>&times;</button>
+        </form>
       </nav>
     </div>
   </header>
@@ -32,7 +38,15 @@
     <div class="container">
       <h1 class="section-title">Research Peptides For Sale</h1>
       <p class="section-sub">Select a product to view details and place an order by email.</p>
+
+      <p class="search-count" data-search-count aria-live="polite"></p>
+
       <div class="product-grid" data-product-grid></div>
+
+      <div class="search-empty" data-search-empty hidden>
+        <h3>No peptides match &ldquo;<span data-search-term></span>&rdquo;</h3>
+        <p>Try a shorter term, or <a href="contact.html">contact us</a> if you're looking for something we don't list yet.</p>
+      </div>
     </div>
   </section>
 

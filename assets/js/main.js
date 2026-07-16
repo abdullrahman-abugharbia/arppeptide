@@ -86,17 +86,37 @@
       '</a>';
   }
 
-  // Paginate a grid that opts in with data-page-size="N"; the nav is inserted
-  // right after the grid and hides itself when everything fits on one page.
-  function paginate(grid, pageSize) {
-    var pages = Math.ceil(PRODUCTS.length / pageSize);
+  // A grid controller. Renders any list of products, and paginates when the
+  // element opts in with data-page-size="N". Exposes setItems() so search can
+  // feed it a filtered list; the page nav hides itself when everything fits.
+  function makeGrid(el) {
+    var pageSize = parseInt(el.getAttribute('data-page-size'), 10) || 0;
+    var items = PRODUCTS.slice();
     var current = 1;
-    var nav = document.createElement('nav');
-    nav.className = 'pagination';
-    nav.setAttribute('aria-label', 'Product pages');
-    grid.insertAdjacentElement('afterend', nav);
+    var nav = null;
+
+    if (pageSize > 0) {
+      nav = document.createElement('nav');
+      nav.className = 'pagination';
+      nav.setAttribute('aria-label', 'Product pages');
+      el.insertAdjacentElement('afterend', nav);
+      nav.addEventListener('click', function (e) {
+        var btn = e.target.closest('.page-btn');
+        if (!btn || btn.disabled) return;
+        var d = btn.getAttribute('data-nav');
+        if (d === 'prev') show(current - 1);
+        else if (d === 'next') show(current + 1);
+        else show(parseInt(btn.getAttribute('data-page'), 10));
+      });
+    }
+
+    function pageCount() {
+      return pageSize > 0 ? Math.max(1, Math.ceil(items.length / pageSize)) : 1;
+    }
 
     function paintNav() {
+      if (!nav) return;
+      var pages = pageCount();
       if (pages < 2) { nav.innerHTML = ''; return; }
       var html = '<button class="page-btn" data-nav="prev" aria-label="Previous page"' +
                  (current === 1 ? ' disabled' : '') + '>&larr;</button>';
@@ -106,36 +126,134 @@
                 '>' + p + '</button>';
       }
       html += '<button class="page-btn" data-nav="next" aria-label="Next page"' +
-              (current === pages ? ' disabled' : '') + '>&rarr;</button>';
+              (current === pageCount() ? ' disabled' : '') + '>&rarr;</button>';
       nav.innerHTML = html;
     }
 
     function show(page) {
-      current = Math.min(Math.max(1, page), pages);
-      var start = (current - 1) * pageSize;
-      grid.innerHTML = PRODUCTS.slice(start, start + pageSize).map(cardHtml).join('');
+      current = Math.min(Math.max(1, page), pageCount());
+      var list = pageSize > 0
+        ? items.slice((current - 1) * pageSize, current * pageSize)
+        : items;
+      el.innerHTML = list.map(cardHtml).join('');
       paintNav();
     }
 
-    nav.addEventListener('click', function (e) {
-      var btn = e.target.closest('.page-btn');
-      if (!btn || btn.disabled) return;
-      var nav_ = btn.getAttribute('data-nav');
-      if (nav_ === 'prev') show(current - 1);
-      else if (nav_ === 'next') show(current + 1);
-      else show(parseInt(btn.getAttribute('data-page'), 10));
-    });
-
-    show(1);
+    return {
+      render: function () { show(1); },
+      setItems: function (list) { items = list; show(1); }
+    };
   }
 
+  var GRIDS = [];
+
   function renderGrids() {
-    var grids = document.querySelectorAll('[data-product-grid]');
-    for (var i = 0; i < grids.length; i++) {
-      var size = parseInt(grids[i].getAttribute('data-page-size'), 10);
-      if (size > 0) paginate(grids[i], size);
-      else grids[i].innerHTML = PRODUCTS.map(cardHtml).join('');
+    var els = document.querySelectorAll('[data-product-grid]');
+    for (var i = 0; i < els.length; i++) {
+      var g = makeGrid(els[i]);
+      GRIDS.push(g);
+      g.render();
     }
+  }
+
+  /* ---- Search ------------------------------------------------------------- */
+  // Built once: quick fields (name/sku/size) plus the full description text, so
+  // researchers can find a product by topic ("wound healing") as well as by name.
+  var INDEX = null;
+
+  function buildIndex() {
+    var scratch = document.createElement('div');
+    INDEX = PRODUCTS.map(function (p) {
+      scratch.innerHTML = p.descriptionHtml || '';
+      return {
+        meta: [p.name, p.slug, p.sizes.join(' '), p.specs.contents, p.specs.sku]
+                .join(' ').toLowerCase(),
+        desc: (scratch.textContent || '').toLowerCase()
+      };
+    });
+  }
+
+  function searchProducts(query) {
+    var terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) return PRODUCTS.slice();
+    var byName = [], byText = [];
+    PRODUCTS.forEach(function (p, i) {
+      var m = INDEX[i];
+      var inMeta = terms.every(function (t) { return m.meta.indexOf(t) !== -1; });
+      if (inMeta) { byName.push(p); return; }
+      var inAll = terms.every(function (t) {
+        return m.meta.indexOf(t) !== -1 || m.desc.indexOf(t) !== -1;
+      });
+      if (inAll) byText.push(p);
+    });
+    return byName.concat(byText);   // name matches rank above description hits
+  }
+
+  // The search input lives in the nav bar on every page. On the catalog it
+  // filters the grid live; everywhere else it is a plain GET form that lands on
+  // products.html?q=... (which also means it still works without JS).
+  function initSearch() {
+    var input = document.querySelector('[data-product-search]');
+    if (!input) return;
+    var clearEl = document.querySelector('[data-search-clear]');
+    var isCatalog = document.body.classList.contains('products-page');
+
+    function toggleClear() { if (clearEl) clearEl.hidden = !input.value.trim(); }
+
+    if (!isCatalog) {
+      input.addEventListener('input', toggleClear);
+      if (clearEl) {
+        clearEl.addEventListener('click', function () {
+          input.value = ''; toggleClear(); input.focus();
+        });
+      }
+      toggleClear();
+      return;                     // let the form submit and navigate
+    }
+
+    buildIndex();
+    var countEl = document.querySelector('[data-search-count]');
+    var emptyEl = document.querySelector('[data-search-empty]');
+    var termEl = emptyEl && emptyEl.querySelector('[data-search-term]');
+
+    function apply() {
+      var q = input.value.trim();
+      var list = searchProducts(q);
+      for (var i = 0; i < GRIDS.length; i++) GRIDS[i].setItems(list);
+      if (countEl) {
+        countEl.textContent = q ? list.length + ' of ' + PRODUCTS.length + ' products' : '';
+      }
+      if (emptyEl) emptyEl.hidden = list.length > 0;
+      if (termEl) termEl.textContent = q;
+      toggleClear();
+      // keep the URL shareable, without stacking history entries per keystroke
+      if (window.history && history.replaceState) {
+        history.replaceState(null, '', location.pathname + (q ? '?q=' + encodeURIComponent(q) : ''));
+      }
+    }
+
+    if (input.form) {
+      input.form.addEventListener('submit', function (e) {
+        e.preventDefault();       // already here; filter in place
+        apply();
+        input.blur();             // dismisses the keyboard on mobile
+      });
+    }
+    input.addEventListener('input', apply);
+    input.addEventListener('search', apply);   // native clear (x) in some browsers
+
+    if (clearEl) {
+      clearEl.addEventListener('click', function () {
+        input.value = '';
+        apply();
+        input.focus();
+      });
+    }
+
+    // pick up ?q= handed over by the nav search on another page
+    var incoming = new URLSearchParams(location.search).get('q');
+    if (incoming) input.value = incoming;
+    apply();
   }
 
   /* ---- Order Now (mailto) ------------------------------------------------- */
@@ -268,6 +386,7 @@
     applyBrand();
     initNav();
     renderGrids();
+    initSearch();
     renderProductPage();
     initContactEmail();
     initNewsletter();
