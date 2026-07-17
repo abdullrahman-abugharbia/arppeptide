@@ -155,7 +155,7 @@ window.PRODUCTS = [
     sizes: ['10mg', '20mg', '30mg'],
     specs: { contents: 'Retatrutide', form: 'Lyophilized powder', purity: '>99%', sku: 'P-RT' },
     image: 'assets/img/retatrutide.jpg',
-    descriptionHtml: ''
+    descriptionHtml: ''   // awaiting official copy from the client
   },
   {
     slug: 'tb-500',

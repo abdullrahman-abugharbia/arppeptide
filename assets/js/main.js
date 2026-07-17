@@ -69,19 +69,17 @@
   }
 
   function cardHtml(p) {
-    var comingSoon = !(p.descriptionHtml && p.descriptionHtml.trim());
     var sizes = formatSizes(p.sizes);
     var href = 'product.html?slug=' + encodeURIComponent(p.slug);
     return '' +
       '<a class="product-card" href="' + href + '">' +
         '<div class="product-card__imgwrap">' +
           '<img src="' + escapeHtml(p.image) + '" alt="' + escapeHtml(p.name) + '" loading="lazy">' +
-          (comingSoon ? '<span class="product-card__badge">Coming soon</span>' : '') +
         '</div>' +
         '<div class="product-card__body">' +
           '<div class="product-card__title">' + escapeHtml(p.name) + '</div>' +
           (sizes ? '<div class="product-card__sizes">' + escapeHtml(sizes) + '</div>' : '') +
-          '<div class="product-card__cta' + (comingSoon ? ' product-card__cta--ghost' : '') + '">View</div>' +
+          '<div class="product-card__cta">View</div>' +
         '</div>' +
       '</a>';
   }
@@ -304,11 +302,11 @@
         }).join('') + '</select>'
       : '<input type="text" id="order-size" value="' + escapeHtml(product.sizes[0] || '') + '" readonly>';
 
+    // When a product has no description yet, simply omit the section (rather
+    // than showing a "coming soon" placeholder) so it reads as a normal product.
     var descHtml = product.descriptionHtml && product.descriptionHtml.trim()
       ? '<div class="product-description">' + product.descriptionHtml + '</div>'
-      : '<div class="product-description"><div class="coming-soon">' +
-          '<h3>Description coming soon</h3><p>Full product information for ' + escapeHtml(product.name) +
-          ' will be added shortly. Contact us for details in the meantime.</p></div></div>';
+      : '';
 
     root.innerHTML = '' +
       '<nav class="breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Peptides</a> / ' + escapeHtml(product.name) + '</nav>' +
