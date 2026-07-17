@@ -376,7 +376,7 @@ window.PRODUCTS = [
   {
     slug: 'nad-plus',
     name: 'NAD+',
-    sizes: ['100mg', '250mg', '750mg'],
+    sizes: ['500mg', '1000mg'],
     specs: { contents: 'NAD+', form: 'Lyophilized powder', purity: '>99%', sku: 'P-NADPLUS-500' },
     image: 'assets/img/nad-plus.jpg',
     descriptionHtml: `
