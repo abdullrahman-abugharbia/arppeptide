@@ -41,19 +41,19 @@ Every product is one object in the `window.PRODUCTS` list. Copy an existing bloc
 
 ```js
 {
-  slug: 'my-peptide',          // goes in the URL: product.html?slug=my-peptide (lowercase, no spaces)
+  id: 16,                      // unique number; goes in the URL: p.html?id=16
   name: 'My Peptide',
   sizes: ['5mg', '10mg'],      // one or more; a dropdown appears when there's more than one
   specs: { contents: 'My Peptide', form: 'Lyophilized powder', purity: '>99%', sku: 'P-XX' },
   image: 'assets/img/my-peptide.jpg',
-  descriptionHtml: `<h3>Heading</h3><p>Text...</p>`   // leave as '' for "Description coming soon"
+  descriptionHtml: `<h3>Heading</h3><p>Text...</p>`   // leave as '' for no description yet
 }
 ```
 
 ## Pages
 - `index.html` — home (hero, features, product grid, newsletter)
 - `products.html` — full product listing
-- `product.html` — a single product (`product.html?slug=...`), with the Order Now button
+- `p.html` — a single product (`p.html?id=...`), with the Order Now button
 - `contact.html` — contact / how to order
 
 ## Notes

@@ -2,15 +2,15 @@
  * ARP Peptide — product catalog data
  * -----------------------------------
  * This is the ONE file to edit when adding, editing or removing a product.
- * Each product needs: slug, name, sizes[], specs{}, image, descriptionHtml.
- *  - slug: used in the URL (product.html?slug=THIS). Keep it lowercase, no spaces.
+ * Each product needs: id, name, sizes[], specs{}, image, descriptionHtml.
+ *  - id: unique number used in the URL (p.html?id=THIS).
  *  - image: path to a file inside assets/img/ (replace with your real photos anytime).
- *  - descriptionHtml: the product write-up (leave as '' to show "Description coming soon").
+ *  - descriptionHtml: the product write-up (leave as '' for no description yet).
  * Descriptions below are taken from the source Word documents.
  */
 window.PRODUCTS = [
   {
-    slug: 'bpc-157',
+    id: 1,
     name: 'BPC-157',
     sizes: ['10mg'],
     specs: { contents: 'BPC-157', form: 'Lyophilized powder', purity: '>99%', sku: 'P-BPC157' },
@@ -67,7 +67,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'ghk-cu',
+    id: 2,
     name: 'GHK-Cu (Copper)',
     sizes: ['100mg'],
     specs: { contents: 'GHK-Cu', form: 'Lyophilized powder', purity: '>99%', sku: 'P-GHKCU-50' },
@@ -116,7 +116,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'mots-c',
+    id: 3,
     name: 'MOTS-C',
     sizes: ['10mg', '40mg'],
     specs: { contents: 'MOTS-C', form: 'Lyophilized powder', purity: '>99%', sku: 'P-MOTS-C' },
@@ -150,7 +150,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'retatrutide',
+    id: 4,
     name: 'Retatrutide',
     sizes: ['10mg', '20mg', '30mg'],
     specs: { contents: 'Retatrutide', form: 'Lyophilized powder', purity: '>99%', sku: 'P-RT' },
@@ -158,7 +158,7 @@ window.PRODUCTS = [
     descriptionHtml: ''   // awaiting official copy from the client
   },
   {
-    slug: 'tb-500',
+    id: 5,
     name: 'TB-500 (Thymosin Beta 4)',
     sizes: ['10mg'],
     specs: { contents: 'TB-500', form: 'Lyophilized powder', purity: '>99%', sku: 'P-TB500' },
@@ -203,7 +203,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'bpc-tb-blend',
+    id: 6,
     name: 'BPC-157 & TB-500 Blend',
     sizes: ['10mg', '20mg'],
     specs: { contents: 'BPC-157 5mg/10mg, TB-500 (thymosin beta 4) 5mg/10mg', form: 'Lyophilized powder', purity: '>99%', sku: 'P-BPC157TB500' },
@@ -242,7 +242,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'cjc-1295-no-dac',
+    id: 7,
     name: 'CJC-1295 NO DAC (Mod GRF 1-29)',
     sizes: ['5mg'],
     specs: { contents: 'CJC-1295 NO DAC (MOD GRF 1-29)', form: 'Lyophilized powder', purity: '>99%', sku: 'P-MODGRF129' },
@@ -276,7 +276,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'dsip',
+    id: 8,
     name: 'DSIP',
     sizes: ['5mg', '10mg'],
     specs: { contents: 'DSIP', form: 'Lyophilized powder', purity: '>99%', sku: 'P-DSIP-5-10' },
@@ -310,7 +310,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'ipamorelin',
+    id: 9,
     name: 'Ipamorelin',
     sizes: ['5mg'],
     specs: { contents: 'Ipamorelin', form: 'Lyophilized powder', purity: '>99%', sku: 'P-IPAMORELIN-5' },
@@ -341,7 +341,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'kpv',
+    id: 10,
     name: 'KPV',
     sizes: ['10mg'],
     specs: { contents: 'KPV', form: 'Lyophilized powder', purity: '>99%', sku: 'P-KPV-10' },
@@ -374,7 +374,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'nad-plus',
+    id: 11,
     name: 'NAD+',
     sizes: ['500mg', '1000mg'],
     specs: { contents: 'NAD+', form: 'Lyophilized powder', purity: '>99%', sku: 'P-NADPLUS-500' },
@@ -413,7 +413,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'pt-141',
+    id: 12,
     name: 'PT-141 (Bremelanotide)',
     sizes: ['10mg'],
     specs: { contents: 'PT-141 (Bremelanotide)', form: 'Lyophilized powder', purity: '>99%', sku: 'P-PT141-10' },
@@ -436,7 +436,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'selank',
+    id: 13,
     name: 'Selank',
     sizes: ['10mg'],
     specs: { contents: 'Selank', form: 'Lyophilized powder', purity: '>99%', sku: 'P-SELANK-10' },
@@ -474,7 +474,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'semax',
+    id: 14,
     name: 'Semax',
     sizes: ['10mg'],
     specs: { contents: 'Semax', form: 'Lyophilized powder', purity: '>99%', sku: 'P-SEMAX-10' },
@@ -506,7 +506,7 @@ window.PRODUCTS = [
     `
   },
   {
-    slug: 'tesamorelin',
+    id: 15,
     name: 'Tesamorelin',
     sizes: ['10mg'],
     specs: { contents: 'Tesamorelin', form: 'Lyophilized powder', purity: '>99%', sku: 'P-TESAMRLN-10' },

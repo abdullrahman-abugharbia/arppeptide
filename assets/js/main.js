@@ -8,9 +8,9 @@
   var SITE = window.SITE || { brand: 'ARP Peptide', ordersEmail: '' };
   var PRODUCTS = window.PRODUCTS || [];
 
-  function bySlug(slug) {
+  function byId(id) {
     for (var i = 0; i < PRODUCTS.length; i++) {
-      if (PRODUCTS[i].slug === slug) return PRODUCTS[i];
+      if (String(PRODUCTS[i].id) === String(id)) return PRODUCTS[i];
     }
     return null;
   }
@@ -70,7 +70,7 @@
 
   function cardHtml(p) {
     var sizes = formatSizes(p.sizes);
-    var href = 'product.html?slug=' + encodeURIComponent(p.slug);
+    var href = 'p.html?id=' + encodeURIComponent(p.id);
     return '' +
       '<a class="product-card" href="' + href + '">' +
         '<div class="product-card__imgwrap">' +
@@ -164,7 +164,7 @@
     INDEX = PRODUCTS.map(function (p) {
       scratch.innerHTML = p.descriptionHtml || '';
       return {
-        meta: [p.name, p.slug, p.sizes.join(' '), p.specs.contents, p.specs.sku]
+        meta: [p.name, p.sizes.join(' '), p.specs.contents, p.specs.sku]
                 .join(' ').toLowerCase(),
         desc: (scratch.textContent || '').toLowerCase()
       };
@@ -286,7 +286,7 @@
     if (!root) return;
 
     var params = new URLSearchParams(window.location.search);
-    var product = bySlug(params.get('slug'));
+    var product = byId(params.get('id'));
 
     if (!product) {
       root.innerHTML = '<div class="coming-soon"><h2>Product not found</h2>' +
