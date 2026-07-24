@@ -13,5 +13,17 @@ window.SITE = {
   // === IMPORTANT ===
   // The email address that customer orders are sent to.
   // Replace the placeholder below with your real order inbox, then save.
-  ordersEmail: 'Info@arppeptide.com'   // TODO: replace with your real order email
+  ordersEmail: 'Info@arppeptide.com',   // TODO: replace with your real order email
+
+  // Visitor counter shown in the footer. The number = base + real visits, kept
+  // in a free shared counter (Abacus API) so every visitor sees the same total.
+  //   base        -> the starting number (3000)
+  //   namespace/key -> where the count is stored (keep unique to this site)
+  //   perSession  -> true: +1 once per visit; false: +1 on every page view
+  visitorCounter: {
+    base: 3000,
+    namespace: 'arppeptide-com',
+    key: 'visits',
+    perSession: true
+  }
 };

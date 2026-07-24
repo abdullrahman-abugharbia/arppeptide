@@ -380,6 +380,77 @@
   }
 
   /* ---- Init --------------------------------------------------------------- */
+  /* ---- Visitor counter ---------------------------------------------------- */
+  // A static site can't hold a number shared across visitors, so the count lives
+  // in a free shared hit-counter (Abacus API). The visit still counts once per
+  // browser session on ANY page, but the number is only DISPLAYED where the
+  // [data-visitor-count] element exists (the home page), animating up from 0.
+  // Time-based count-up. Uses setInterval (not requestAnimationFrame) so it also
+  // runs in backgrounded/throttled tabs and always lands on the real number.
+  function animateCount(el, target, duration) {
+    var start = Date.now();
+    el.textContent = '0';
+    var timer = setInterval(function () {
+      var p = Math.min((Date.now() - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);            // ease-out cubic
+      el.textContent = Math.round(eased * target).toLocaleString();
+      if (p >= 1) {
+        clearInterval(timer);
+        el.textContent = target.toLocaleString();    // land exactly on the real number
+      }
+    }, 33);                                           // ~30 fps
+  }
+
+  function initVisitorCounter() {
+    var cfg = SITE.visitorCounter;
+    if (!cfg) return;
+    var out = document.querySelector('[data-visitor-count]');   // present on home only
+
+    var counted = false;
+    try { counted = cfg.perSession && sessionStorage.getItem('arpVisited') === '1'; } catch (e) {}
+
+    // Already counted this session and nothing to show here -> nothing to do.
+    if (counted && !out) return;
+
+    // The visit is counted on load (the fetch below), but the count-up animation
+    // only plays once the counter scrolls into view — and only after the real
+    // number has arrived. We wait for BOTH before animating, so it's never missed.
+    var target = null, visible = false, played = false;
+    function playWhenReady() {
+      if (played || target === null || !visible) return;
+      played = true;
+      animateCount(out, target, 1600);
+    }
+    if (out) {
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { io.disconnect(); visible = true; playWhenReady(); }
+        }, { threshold: 0.5 });
+        io.observe(out);
+      } else {
+        visible = true;   // no observer support -> just play once the number is in
+      }
+    }
+
+    var api = 'https://abacus.jasoncameron.dev';
+    var tail = '/' + encodeURIComponent(cfg.namespace) + '/' + encodeURIComponent(cfg.key);
+    var url = api + (counted ? '/get' : '/hit') + tail;   // /hit increments, /get just reads
+
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var v = (d && typeof d.value === 'number') ? d.value : 0;
+        if (!counted && cfg.perSession) {
+          try { sessionStorage.setItem('arpVisited', '1'); } catch (e) {}
+        }
+        if (out) { target = (cfg.base || 0) + v; playWhenReady(); }
+      })
+      .catch(function () {
+        // service unreachable — still show the base so it never looks broken
+        if (out) { target = (cfg.base || 0); playWhenReady(); }
+      });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     applyBrand();
     initNav();
@@ -388,5 +459,6 @@
     renderProductPage();
     initContactEmail();
     initNewsletter();
+    initVisitorCounter();
   });
 })();

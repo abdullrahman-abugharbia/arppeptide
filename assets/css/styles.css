@@ -307,6 +307,20 @@ h4 { font-size: 1.02rem; }
 .site-footer .disclaimer { line-height: 1.7; margin: 18px 0 0; max-width: 900px; font-size: .8rem; color: var(--faint); }
 .site-footer .copyright { margin: 14px 0 0; color: #5f5a4f; font-size: .8rem; }
 
+/* ---------- Visitor counter (home page) ------------------------------------ */
+.visitor-stat { text-align: center; padding: 14px 0; }
+.visitor-stat__num {
+  font-family: var(--font);
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  font-weight: 800; line-height: 1; letter-spacing: -.02em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;   /* keeps width steady while counting */
+}
+.visitor-stat__label {
+  margin-top: 12px; font-size: .78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .18em; color: var(--muted);
+}
+
 /* ---------- Responsive ----------------------------------------------------- */
 @media (max-width: 900px) {
   .hero-card { grid-template-columns: 1fr; }
