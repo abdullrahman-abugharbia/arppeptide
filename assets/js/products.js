@@ -508,7 +508,7 @@ window.PRODUCTS = [
   {
     id: 15,
     name: 'Tesamorelin',
-    sizes: ['10mg'],
+    sizes: ['10mg', '20mg'],
     specs: { contents: 'Tesamorelin', form: 'Lyophilized powder', purity: '>99%', sku: 'P-TESAMRLN-10' },
     image: 'assets/img/tesamorelin.jpg',
     descriptionHtml: `
