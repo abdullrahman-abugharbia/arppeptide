@@ -277,7 +277,9 @@ h4 { font-size: 1.02rem; }
 }
 .order-box .row { display: flex; gap: 14px; }
 .order-box .row .field { flex: 1; }
-.order-note { font-size: .78rem; color: var(--muted); margin: 14px 0 0; }
+.coa-note { display: flex; align-items: center; gap: 8px; margin: 14px 0 0; font-size: .84rem; font-weight: 600; color: var(--ink-2); }
+.coa-note svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+.order-note { font-size: .78rem; color: var(--muted); margin: 10px 0 0; }
 
 .product-description { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
 .product-description h3 { margin-top: 34px; color: var(--gold); }

@@ -330,6 +330,7 @@
                 '<input type="number" id="order-qty" min="1" value="1"></div>' +
             '</div>' +
             '<a class="btn btn--solid btn--block btn--lg" id="order-now" href="#">Order Now</a>' +
+            '<p class="coa-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Certificate of analysis available on request</p>' +
             '<p class="order-note">Clicking &ldquo;Order Now&rdquo; opens your email app with this order pre-filled. Add your details and send &mdash; we\'ll reply to confirm.</p>' +
           '</div>' +
         '</div>' +
