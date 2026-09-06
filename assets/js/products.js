@@ -16,7 +16,7 @@ window.PRODUCTS = [
     specs: { contents: 'BPC-157', form: 'Lyophilized powder', purity: '>99%', sku: 'P-BPC157' },
     image: 'assets/img/bpc-157.jpg',
     descriptionHtml: `
-      <h3>BPC-157 Peptide</h3>
+      <h3>BPC-157</h3>
       <p>The BPC-157 peptide, also known as Pentadecapeptide BPC 157 or Body Protection Compound 157, is a synthetic compound that has been suggested in various studies to assist with healing joint, tendon, and muscle tissue, as well as nerve tissue.</p>
       <p>BPC-157 is a peptide composed of 15 amino acids with potential protective properties. As the name suggests, Body Protection Compound (BPC) is an amino acid fragment isolated from gastric juice.(1) BPC-157 is also commonly known as pentadecapeptide due to the 15 amino acids it is comprised of.(1)</p>
 
@@ -73,7 +73,7 @@ window.PRODUCTS = [
     specs: { contents: 'GHK-Cu', form: 'Lyophilized powder', purity: '>99%', sku: 'P-GHKCU-50' },
     image: 'assets/img/ghk-cu.jpg',
     descriptionHtml: `
-      <h3>GHK-Cu (Copper) Peptide</h3>
+      <h3>GHK-Cu (Copper)</h3>
       <p>GHK-Cu is a naturally occurring copper-binding peptide composed of 3 amino acids, i.e. glycyl-L-histidyl-L-lysine.(1) -Cu refers to the chemical addition of copper. GHK-Cu (Copper) is a small tripeptide found in plasma and reportedly releases at the time of injury. The concentration of GHK-Cu declines with age. At 20 years, the average concentration of GHK-Cu of 200 ng/mL declines to 80 ng/mL by 60 years.(1)</p>
       <p>Studies(4) have suggested when the plasma GHK peptide is added to the cell culture in nanomolar amounts; the peptide has the potential to induce a wide range of responses from growth stimulation to toxic cell differentiation. During the isolation of the peptide, researchers suggested that it exhibited potential chelating properties and might co-isolate with almost the same amount of copper ions and a fifth of the amount of iron found in the cells. When the peptide was incubated in the isolated cells as a bound complex with copper and iron molecules, maximal potential was reported.</p>
 
@@ -122,7 +122,7 @@ window.PRODUCTS = [
     specs: { contents: 'MOTS-C', form: 'Lyophilized powder', purity: '>99%', sku: 'P-MOTS-C' },
     image: 'assets/img/mots-c.jpg',
     descriptionHtml: `
-      <h3>MOTS-c Peptide</h3>
+      <h3>MOTS-c</h3>
       <p>MOTS-c (mitochondrial open-reading-frame of the 12S rRNA-c) peptide is a novel mitochondria-derived peptide. It is a short peptide composed of 16 amino acids, expressed in tissues and plasma, indicating a cell-specific and hormonal role.(1) With the potential to work both as a cell-specific compound and as a hormone, this peptide possibly acts by stimulating the AMP-activated protein kinase (AMPK) pathway. Only two mitochondrial-derived peptides (MDPs) have been studied, Humanin and MOTS-c. When metabolic stress occurs in the organism, the peptide is believed to translocate to the cellular nuclei and alter the gene expression. MOTS-c peptide may also be released extracellularly and is known as "mitochondrial hormone" or simply as "mitokine.&rdquo;(2)(3)</p>
 
       <h3>Chemical Makeup(4)</h3>
@@ -156,7 +156,7 @@ window.PRODUCTS = [
     specs: { contents: 'Retatrutide', form: 'Lyophilized powder', purity: '>99%', sku: 'P-RT' },
     image: 'assets/img/retatrutide.jpg',
     descriptionHtml: `
-      <h3>Retatrutide Peptide</h3>
+      <h3>Retatrutide</h3>
       <p>Retatrutide is the current frontier of incretin pharmacology &mdash; a "triple agonist" that activates three metabolic hormone receptors simultaneously: GLP-1, GIP, and the glucagon receptor. If semaglutide picks one lock and tirzepatide picks two, retatrutide picks all three at once. The GLP-1 component handles appetite suppression and slows gastric emptying, the GIP component amplifies insulin sensitivity and fat metabolism, and the glucagon receptor component &mdash; the one no other approved incretin compound touches &mdash; directly increases energy expenditure by raising your basal metabolic rate and driving thermogenesis in brown adipose tissue. The clever engineering here is that the glucagon receptor, in isolation, would raise blood sugar (glucagon is the counter-hormone to insulin). But because GLP-1 and GIP are firing simultaneously to boost insulin output, that blood sugar rise is neutralized &mdash; leaving only the thermogenic and fat-oxidizing effects of glucagon receptor activation intact.</p>
       <p>The phase 2 clinical data from the NEJM trial is the most aggressive weight loss result ever recorded for a pharmacological compound. At the 8mg and 12mg doses, subjects lost an average of 22.8% and 24.2% of total body weight over 48 weeks respectively &mdash; numbers that have never been seen with any prior drug, including tirzepatide. Visceral fat reduction, liver fat content reduction, and triglyceride improvements were all pronounced. The glucagon receptor contribution is believed to be responsible for the metabolic rate elevation that separates retatrutide's results from tirzepatide, essentially preventing the metabolic adaptation (slowing metabolism) that typically blunts weight loss over time. It is currently in Phase 3 trials for obesity, type 2 diabetes, and metabolic dysfunction-associated steatohepatitis (MASH).</p>
       <p>The trade-off for this level of efficacy is a more demanding side effect profile, specifically around cardiovascular stress. The glucagon receptor activation elevates resting heart rate &mdash; in some subjects significantly &mdash; which is why morning dosing is preferred (to allow heart rate normalization during waking hours) and why subjects with pre-existing cardiac issues are excluded. A unique side effect not seen with other incretins is skin hyperesthesia: an unusual sensitivity to touch, particularly on the arms and torso, that emerges at higher doses. Retatrutide is not a compound for first-time incretin researchers &mdash; it is most appropriate for experienced users who have run semaglutide or tirzepatide protocols and understand their individual tolerability baseline.</p>
@@ -169,7 +169,7 @@ window.PRODUCTS = [
     specs: { contents: 'TB-500', form: 'Lyophilized powder', purity: '>99%', sku: 'P-TB500' },
     image: 'assets/img/tb-500.jpg',
     descriptionHtml: `
-      <h3>TB-500 Peptide</h3>
+      <h3>TB-500</h3>
       <p>TB-500 peptide, also known as synthetic Thymosin Beta 4 or T&beta;4 is the synthetic version of the naturally occurring protein Thymosin beta 4. The latter is found naturally within the cells of the thymus organ and encoded by the TMSB4X gene. Researchers have suggested TB-500 peptide hosts similar potential as Thymosin beta 4. These potential mechanisms of action may include inducing angiogenesis, elevating wound healing, or possibly elevated metastatic potential of tumor cells and hair growth.</p>
       <p>Besides being highly soluble in water and light in weight, TB-500 is a 43 amino acid-containing peptide found in abundance in the wound fluid comprising multiple blood platelets. This peptide may exhibit possible anti-inflammatory potential and may support neurological healing, as well as potentially supporting healing processes in the spinal cord, heart, and epidermis.(1)</p>
 
@@ -214,7 +214,7 @@ window.PRODUCTS = [
     specs: { contents: 'BPC-157 5mg/10mg, TB-500 (thymosin beta 4) 5mg/10mg', form: 'Lyophilized powder', purity: '>99%', sku: 'P-BPC157TB500' },
     image: 'assets/img/bpc-tb-blend.jpg',
     descriptionHtml: `
-      <h3>BPC-157 &amp; TB-500 Peptide Blend</h3>
+      <h3>BPC-157 &amp; TB-500 Blend</h3>
       <p>BPC-157 Peptide, also known as Pentadecapeptide BPC-157, or Body Protection Compound 157, is a wholly synthetic peptide that is potentially linked to multiple cellular functions and is perceived to have significance in healing of experimental models of injury. It is speculated to engage with cellular communication routes, possibly affecting elements associated with rejuvenation and recuperation. A few research studies hint that BPC-157 might also possess capabilities to encourage blood vessel formation and regulate inflammation-related activities.(1) Moreover, experimental findings have posited that BPC-157 may aid in safeguarding and regenerating various cells and tissues. Overall, BPC-157 has been suggested in various studies to potentially help with healing joint, tendon, and muscle tissue, as well as nerve tissue.</p>
       <p>TB-500 Peptide, also known as Synthetic thymosin beta-4, or TB-4, has been suggested by researchers to possibly assist in the healing process after injury, especially brain and neurological injury. Other TB-500 research has suggested it helps with wound healing and with hair growth. The peptide is a man-made variant of the thymosin beta-4 (Tβ4) peptide found naturally within the cells of the thymus organ, and encoded by the TMSB4X gene. From research on thymosin beta-4, TB-500 appears to modulate cell movement, differentiation, and tissue healing. It is believed to engage with various cellular signaling routes to manifest its actions. Investigations further imply that TB-500 might encourage angiogenesis, as well as cellular and tissue renewal.(2)</p>
       <p>Both BPC-157 and TB-500 are synthetic polypeptides, where TB-500 is composed of 43 amino acids, and BPC-157 is composed of 15 amino acids.(3)(4)</p>
@@ -253,7 +253,7 @@ window.PRODUCTS = [
     specs: { contents: 'CJC-1295 NO DAC (MOD GRF 1-29)', form: 'Lyophilized powder', purity: '>99%', sku: 'P-MODGRF129' },
     image: 'assets/img/cjc-1295-no-dac.jpg',
     descriptionHtml: `
-      <h3>CJC-1295 Peptide (No DAC)</h3>
+      <h3>CJC-1295 (No DAC)</h3>
       <p>CJC-1295 is a synthetic peptide derivative of the naturally occurring GHRH hormone and is composed of 29 amino acids.(2) This peptide is also referred to as Modified GRF (1-29) or CJC 1295 without DAC. It is a modified version of the peptide containing four substituted amino groups that are considered to help prevent the peptide's degradation. CJC without DAC does not have a Drug Affinity Complex that is sometimes added to further extend the half-life of the peptide.</p>
       <p>Modified growth hormone fragments GRF (1-29) were first discovered in the early 1980s, when it was suggested that the first 29 amino acids of the natural growth hormone-releasing hormone might retain all the properties of the full 44 amino acid peptide.(3) One of the potential drawbacks of synthetically developed growth hormone-releasing peptides is a short half-life. Rigorous research has resulted in a supposedly stabilized, longer-lasting CJC-1295 (No DAC) peptide.(1)</p>
       <h3>Overview</h3>
@@ -321,7 +321,7 @@ window.PRODUCTS = [
     specs: { contents: 'Ipamorelin', form: 'Lyophilized powder', purity: '>99%', sku: 'P-IPAMORELIN-5' },
     image: 'assets/img/ipamorelin.jpg',
     descriptionHtml: `
-      <h3>Ipamorelin Peptide</h3>
+      <h3>Ipamorelin</h3>
       <p>Ipamorelin is a synthetic peptide that is composed of five amino acids, otherwise known as a pentadecapeptide (Aib-His-D-2-Nal-D-Phe-Lys-NH2), formally classified as a Growth Hormone Secretagogue (GHS). Its name is derived from the intention of its development. Ipamorelin peptide was designed to act via ghrelin receptor binding. The ghrelin receptors on the pituitary gland (the gland naturally involved with growth hormone, or hGH synthesis) are also known as Growth Hormone Secretagogue receptors (GHS-R). Through its implied action, Ipamorelin may host the potential to trigger the GHS-Rs on the pituitary gland and potentially stimulate the release of growth hormone.(1)</p>
       <h3>Overview</h3>
       <p>Ipamorelin is the first synthetic GHS that appears highly selective and may have the potential to augment the production of hGH without affecting other pituitary hormones such as prolactin or adrenocorticotropic hormone (ACTH). The potential increase in hGH might promote lipolysis and insulin-like growth factor-1 (IGF-1) production synthesis. Consequently, IGF-1 may become a mediator of hGH’s anabolic actions, and thereby the peptide may act to increase cellular proliferation and bone and muscle anabolism.(1)</p>
@@ -352,7 +352,7 @@ window.PRODUCTS = [
     specs: { contents: 'KPV', form: 'Lyophilized powder', purity: '>99%', sku: 'P-KPV-10' },
     image: 'assets/img/kpv.jpg',
     descriptionHtml: `
-      <h3>KPV Peptide</h3>
+      <h3>KPV</h3>
       <p>Alpha melanocyte-stimulating hormone (a-MSH) is also classified as a melanotropin. a-MSH is an endogenous peptide hormone, composed of 13 amino acids, and considered to play a role in metabolic function, as well as other biological processes. Scientists isolated a fragment of this protein hormone and identified its potential biological action, naming it KPV peptide. KPV comprises three amino acids: Lysine, Proline, and Valine.(1) This peptide is a C-terminal fragment of the a-MSH protein hormone, which is considered the primary amino acid sequence in the hormone responsible for its properties.(2)</p>
       <p>A study(2) was published in 1989 explaining how the tripeptide was isolated and its biological potential determined. Upon discovering that the COOH terminal peptide in the a-MSH hormone is the primary amino acid messenger sequence, scientists conducted preliminary research to determine if KPV might prevent an excessive increase in vasopermeability and excessive swelling of blood vessels. As a part of the study, scientists isolated the KPV peptide and presented it to experimental mice to determine its potential to mitigate swelling in their ears. After the completion of the study, the researchers reported that the isolated fragment appeared to have inhibited the swelling. KPV's potential anti-inflammatory action may be induced by inactivating the inflammatory pathways.(3) It may also possibly inhibit the synthesis and release of the pro-inflammatory cytokine cells in intestinal and immune cells.</p>
       <h3>Chemical Makeup</h3>
@@ -385,7 +385,7 @@ window.PRODUCTS = [
     specs: { contents: 'NAD+', form: 'Lyophilized powder', purity: '>99%', sku: 'P-NADPLUS-500' },
     image: 'assets/img/nad-plus.jpg',
     descriptionHtml: `
-      <h3>NAD+ Peptide</h3>
+      <h3>NAD+</h3>
       <p>NAD+ is an acronym for Nicotinamide Adenine Dinucleotide, an endogenous nucleotide that is considered to regulate primary functions such as metabolism, energy production, and DNA repair. It is also considered to act as a secondary messenger via calcium-dependent signaling mechanisms, possibly serving as an immunoregulatory component.(1)(2) NAD+ is considered by researchers to be naturally synthesized via the de novo mechanism of converting the amino acid tryptophan through several enzymatic steps. Researchers posit that there are five components to NAD+ synthesis, including tryptophan, nicotinamide, nicotinic acid, nicotinamide riboside, and nicotinamide mononucleotide.(3) Once synthesized, research suggests it exerts over 500 enzymatic reactions and cellular processes(12) to aid metabolic activities. Essentially, it is suggested to act as a coenzyme in redox functions, converted to NADH (the energy-carrying form of NAD+), which may involve other metabolic pathways.</p>
       <h3>Overview</h3>
       <p>Researchers have suggested Nicotinamide Adenine Dinucleotide (NAD+) to act as a coenzyme, with three major classes of enzymes including:</p>
@@ -424,7 +424,7 @@ window.PRODUCTS = [
     specs: { contents: 'PT-141 (Bremelanotide)', form: 'Lyophilized powder', purity: '>99%', sku: 'P-PT141-10' },
     image: 'assets/img/pt-141.jpg',
     descriptionHtml: `
-      <h3>PT-141 Peptide</h3>
+      <h3>PT-141</h3>
       <p>Bremelanotide, which is also commonly known by PT-141, is a cyclic synthetic peptide composed of seven amino acids.(1) PT-141 synthetic peptide appears to be agonistic to melanocortin receptors, which is similar to the natural hormone alpha-MSH.(2) It is a by-product of the metabolism of another synthetic analog called melanotan II. Initial studies suggested that melanocortin hormones may regulate various physiological functions. When test animals were presented with the isolated hormone, it was reported to present elevated reproductive functions, which is one of the primary areas of research currently being conducted on PT-141 peptide.</p>
       <h3>Overview</h3>
       <p>Studies have suggested that PT-141 shows agonistic properties towards melanocortin receptors, namely MC3R and MC4R, which may result in elevated reactions in the central nervous system. MC3R, which appears to be primarily expressed in the brain, especially within the hypothalamus, might play a role in energy homeostasis. It has been hypothesized by research teams examining melanocortin receptor activity, that MC3R may potentially modulate the actions of other melanocortin receptors in this area. Moreover, MC3R might influence feeding behavior, possibly impacting appetite and food intake, and is thought to be involved in various metabolic processes, including the potential regulation of glucose and lipid metabolism.(3) On the other hand, MC4R is believed to be essential in appetite control. When activated in the brain, it is considered to contribute to appetite regulation. MC4R is also posited to have a role in energy expenditure, with its activation possibly leading to an increase in energy output, which could contribute to weight reduction. This receptor has also been tentatively linked to reproductive function, especially in the potential regulation of the function of penile tissues and overall reproductive behavior.(4) In publically available study, it was suggested by researchers that following binding with MC3R and MC4R receptors, the peptide appeared to lead to the activation of the neurons found in the hypothalamus, leading to apparently increased immunoreactivity.2() Neurons in the surrounding region of the central nervous system may also be stimulated as they intake the chemicals which then reportedly lead to sexual arousal in murine models.</p>
@@ -447,7 +447,7 @@ window.PRODUCTS = [
     specs: { contents: 'Selank', form: 'Lyophilized powder', purity: '>99%', sku: 'P-SELANK-10' },
     image: 'assets/img/selank.jpg',
     descriptionHtml: `
-      <h3>Selank Peptide</h3>
+      <h3>Selank</h3>
       <p>Selank is a short, synthetic heptapeptide composed of seven amino acids. Selank was developed to mimic the naturally occurring peptide Tuftsin,(5) a short fragment from the immunoglobulin G (IgG), a natural tetrapeptide involved in certain biological functions that regulate the immune system. After the discovery and initial isolation of Tuftsin, researchers suggested that the peptide might be involved in the functions of phagocytic cells, including phagocytosis, motility, and immunological cell functions.(2) Since then, various synthetic analogs of Tuftsin have been synthesized in laboratories by conventional and polymeric reagent methods.(4)</p>
       <h3>Overview</h3>
       <p>Selank is a peptide chain composed of two fragments – one is Tuftsin at the N-terminus, and the other is a tripeptide Pro-Gly-Pro (PGP) at the C-terminal end of the molecule. The inclusion of a Pro-Gly-Pro (PGP) sequence in the peptide Selank might enhance its potential to penetrate various biological barriers, including the blood-brain barrier (BBB). The BBB is a highly selective and semi-permeable membrane that delineates the circulating blood from brain tissues and extracellular fluid within the central nervous system. It is deemed to play a pivotal role in controlling the entry of molecules. Integrating the PGP sequence might modify the peptide's hydrophilicity or lipophilicity, which might increase its compatibility with the lipid-rich milieu of the BBB. Moreover, the PGP motif might interact with certain transport systems or receptors on the BBB membrane, potentially facilitating receptor-mediated endocytosis or active transport. These mechanisms may permit Selank to circumvent the tight junctions that typically impede the transit of larger molecules through the BBB. Additionally, the presence of the PGP sequence might alter the tertiary structure of Selank, potentially rendering it more amenable to traversing the BBB. This alteration might arise from changes in the peptide's spatial configuration, which may influence its interaction with the cellular components of the BBB.(6)</p>
@@ -485,7 +485,7 @@ window.PRODUCTS = [
     specs: { contents: 'Semax', form: 'Lyophilized powder', purity: '>99%', sku: 'P-SEMAX-10' },
     image: 'assets/img/semax.jpg',
     descriptionHtml: `
-      <h3>Semax Peptide</h3>
+      <h3>Semax</h3>
       <p>Semax peptide is a synthetic polypeptide analog of an adrenocorticotropic hormone fragment 4-7 (ACTH 4-7),(1) a hormone secreted by the anterior pituitary gland. This fragment has been reported by researchers not to exhibit any action characteristic of ACTH itself but may have a potentially specific action within the brain.(2)</p>
       <p>Researchers find that naturally occurring peptides may occasionally exhibit instability and easy degradation by biological enzymes, such as those found in gastrointestinal and cerebrospinal fluids. Consequently, researchers aim to synthesize analogs of these naturally occurring but potentially unstable peptides to induce similar biological action with the added value of higher stability. Semax is one such synthetically developed derivative of an endogenous adrenocorticotropic hormone fragment. The Met-Glu-His-Phe sequence in Semax is extended by adding a Pro-Gly-Pro (PGP) sequence at its C-terminal end. This modification with PGP may potentially enhance the molecule's ability to cross the blood-brain barrier (BBB) by increasing its lipophilicity. This increase in lipophilicity may facilitate the molecule’s passive diffusion or uptake through mechanisms such as lipid raft-mediated endocytosis, which may circumvent the tight junctions that typically restrict entry into the brain. Furthermore, the presence of PGP at the peptide's C-terminus might also modify its interactions with specific transporters or receptors on the BBB, potentially favoring its transport via receptor-mediated transcytosis. Moreover, the acetylation of Semax may improve its stability by making it more resistant to enzymatic breakdown, thereby extending its half-life in biological settings.</p>
       <h3>Overview</h3>
@@ -517,7 +517,7 @@ window.PRODUCTS = [
     specs: { contents: 'Tesamorelin', form: 'Lyophilized powder', purity: '>99%', sku: 'P-TESAMRLN-10' },
     image: 'assets/img/tesamorelin.jpg',
     descriptionHtml: `
-      <h3>Tesamorelin Peptide</h3>
+      <h3>Tesamorelin</h3>
       <p>Tesamorelin is a synthetic polypeptide composed of 44 amino acids analogous to growth hormone-releasing hormone. The N-terminus of the compound has been modified compared to growth hormone-releasing hormone, the modification of which researchers suggest may lead to improved stability.(1)</p>
       <p>Tesamorelin has been studied for its potential mechanism of action, posited to be similar to growth hormone-releasing hormones (GHRH) receptors located at the anterior pituitary gland, possibly leading to increased production and secretion of growth hormones. Growth hormones may act on several cells, including hepatocytes, stimulating the systemic synthesis of insulin-like growth factor-1 (IGF-1). In addition, growth hormone may also stimulate IGF-1 production locally, inside various tissues.(1)</p>
       <h3>Overview</h3>
@@ -558,7 +558,7 @@ window.PRODUCTS = [
     specs: { contents: 'AOD 9604', form: 'Lyophilized powder', purity: '>99%', sku: 'P-AOD9604-5' },
     image: 'assets/img/aod-9604.jpg',
     descriptionHtml: `
-      <h3>AOD 9604 Peptide</h3>
+      <h3>AOD 9604</h3>
       <p>AOD 9604 peptide is a synthetic analog of growth hormone designed with the intention of mitigating obesity and aiding weight loss. The peptide is a modified fragment of the growth hormone where the last 16 amino acids (176-191) have been reproduced as a specific peptide, called GH Fragment 176-191 or simply AOD 9604. It also has a tyrosine residue to replace the first amino acid at the N-terminus, which researchers consider to help increase the stability of the peptide.(1)</p>
       <p>More specifically, AOD 9604 is considered the lipolytic fragment of GH as different parts of the GH molecule appease to have different potentials. For instance, studies suggest that out of its 191 amino acid structure “the N-terminal region exhibits an insulin-potentiating action, while amino acids 108 - 129 of hGH were found to evoke high mitogenic responses.”(2)</p>
       <h3>Overview</h3>
@@ -596,7 +596,7 @@ window.PRODUCTS = [
     specs: { contents: 'Receptor Grade IGF-1 LR3', form: 'Lyophilized powder', purity: '>99%', sku: 'P-IGF1LR3-1' },
     image: 'assets/img/igf-1-lr3.jpg',
     descriptionHtml: `
-      <h3>Receptor Grade IGF-1 LR3 Peptide</h3>
+      <h3>Receptor Grade IGF-1 LR3</h3>
       <p>Between 1940 and 1950, the growth hormone somatotropin was identified and researched. It was tentatively suggested that this hormone might enhance sulfate uptake in normal control rat serum, implying an increase in amino acid uptake or synthesis. However, this connection was not definitively established. This so-called "sulfate factor" was subsequently isolated from the rat serum and named "somatomedin." Concurrently, an independent study explored the components responsible for producing insulin-like activity. It was hypothesized during this investigation that these components might be "somatomedins," leading to the designation of these compounds as "insulin-like growth factors."(1)</p>
       <p>Further explorations into the insulin-like growth factors involved gene-targeting approaches to potentially enhance their bioavailability and potency. During these studies, a variant called Receptor Grade IGF-1 LR3 was developed. This variant included an additional arginine residue and featured an elongated structure at the N-terminal (by 13 amino acids), resulting in a protein composed of 83 amino acids, compared to the 70 amino acids found in natural IGF-1.(1)</p>
       <p>Receptor Grade IGF-1 LR3 peptide, a polypeptide amino acid also known as Long arginine 3 IGF-1, or LR3-IGF-1, has been suggested to exhibit potential action similar to Insulin-like Growth factor-1, or IGF-1.(2) IGF-1 is a naturally produced protein comprised of 70 amino acids. Structurally similar to insulin, this Receptor Grade IGF-1 LR3 has the potential primarily to regulate cell tissue and development. Several synthetic variations of IGF-1, such as recombinant IGF-1 (rhIGF-1), were developed to mimic the natural protein identically and stimulate similar actions as IGF-1. Another example is Receptor Grade IGF-1 LR3, which researchers speculate exhibits an increased affinity and anabolic potential while binding less to IGF-1 binding proteins (IGF-1BPs). This variant has been developed particularly for evaluation in cell growth studies. Moreover, the designation of Receptor Grade refers to the purity of the material, which is considered higher than Media Grade IGF-1 LR3.</p>
@@ -626,7 +626,7 @@ window.PRODUCTS = [
     specs: { contents: 'Kisspeptin-10', form: 'Lyophilized powder', purity: '>99%', sku: 'P-KISSPEPT-10' },
     image: 'assets/img/kisspeptin-10.jpg',
     descriptionHtml: `
-      <h3>Kisspeptin-10 Peptide</h3>
+      <h3>Kisspeptin-10</h3>
       <p>Kisspeptin-10 is a naturally occurring peptide protein encoded by the KISS1 gene.(2) Kisspeptin is a product of the KISS1 gene, produced by the cleavage of the original 145-amino acid polypeptide to a smaller peptide. This smaller peptide, composed of 54-amino acids, is cleaved further to become Kisspeptin 45-54, also known as Kisspeptin 10.(6)</p>
       <p>KISS1 is a gene that is considered to suppress metastases of melanomas and breast carcinomas, thereby inhibiting abnormal cell growth and potentially preventing cancer.(2) Initially considered to be a metastasis suppressor, Kisspeptin-10 was later suggested to possess a different expression profile, which may potentially allow it to function on the hypothalamus and pituitary gland, thereby impacting the reproductive system.(3)</p>
       <p>Several independent studies in the mid-2000s suggested that Kisspeptin-10 may play a role in hypogonadotropic hypogonadism, as the peptide is considered to be a ligand of the G-protein coupled receptor 54 (GPR54).(5) Research continues to explore this potential aspect of the Kisspeptin-10 peptide.</p>
