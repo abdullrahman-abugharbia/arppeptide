@@ -20,10 +20,13 @@ window.SITE = {
   //   base        -> the starting number (3000)
   //   namespace/key -> where the count is stored (keep unique to this site)
   //   perSession  -> true: +1 once per visit; false: +1 on every page view
+  //   timeoutMs   -> how long to wait for the counter service before falling
+  //                  back to the last known number (or base)
   visitorCounter: {
     base: 3000,
     namespace: 'arppeptide-com',
     key: 'visits',
-    perSession: true
+    perSession: true,
+    timeoutMs: 4000
   }
 };

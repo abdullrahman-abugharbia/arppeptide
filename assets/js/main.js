@@ -433,23 +433,45 @@
       }
     }
 
+    var base = cfg.base || 0;
     var api = 'https://abacus.jasoncameron.dev';
     var tail = '/' + encodeURIComponent(cfg.namespace) + '/' + encodeURIComponent(cfg.key);
     var url = api + (counted ? '/get' : '/hit') + tail;   // /hit increments, /get just reads
 
-    fetch(url)
-      .then(function (r) { return r.json(); })
+    // Last total this browser saw. If the counter service is slow or down we show
+    // this instead of dropping back to the base (or sitting on "0" forever).
+    var cached = 0;
+    try { cached = parseInt(localStorage.getItem('arpVisitorTotal'), 10) || 0; } catch (e) {}
+
+    // Give up on the service after a few seconds — a hung request must never
+    // leave the counter stuck on its placeholder.
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timeout = setTimeout(function () { if (ctrl) ctrl.abort(); fail(); }, cfg.timeoutMs || 4000);
+    var settled = false;
+
+    function show(total) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeout);
+      if (out) { target = total; playWhenReady(); }
+    }
+    function fail() { show(Math.max(cached, base)); }
+
+    fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function (d) {
-        var v = (d && typeof d.value === 'number') ? d.value : 0;
+        if (!d || typeof d.value !== 'number') throw new Error('bad response');
         if (!counted && cfg.perSession) {
           try { sessionStorage.setItem('arpVisited', '1'); } catch (e) {}
         }
-        if (out) { target = (cfg.base || 0) + v; playWhenReady(); }
+        var total = base + d.value;
+        try { localStorage.setItem('arpVisitorTotal', String(total)); } catch (e) {}
+        show(total);
       })
-      .catch(function () {
-        // service unreachable — still show the base so it never looks broken
-        if (out) { target = (cfg.base || 0); playWhenReady(); }
-      });
+      .catch(fail);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
