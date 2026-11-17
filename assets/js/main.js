@@ -383,21 +383,24 @@
   /* ---- Init --------------------------------------------------------------- */
   /* ---- Visitor counter ---------------------------------------------------- */
   // A static site can't hold a number shared across visitors, so the count lives
-  // in a free shared hit-counter (Abacus API). The visit still counts once per
-  // browser session on ANY page, but the number is only DISPLAYED where the
-  // [data-visitor-count] element exists (the home page), animating up from 0.
-  // Time-based count-up. Uses setInterval (not requestAnimationFrame) so it also
-  // runs in backgrounded/throttled tabs and always lands on the real number.
-  function animateCount(el, target, duration) {
+  // in a free shared hit-counter (countapi.mileshilliard.com — no signup, keys
+  // never expire). The visit counts once per browser session on ANY page, but
+  // the number is only DISPLAYED where [data-visitor-count] exists (home page).
+  // Shown total = base + the counter's value.
+
+  // Time-based count-up from `from` to `to`. Uses setInterval (not rAF) so it
+  // also runs in backgrounded/throttled tabs and always lands on the number.
+  var countTimer = null;
+  function animateCount(el, from, to, duration) {
+    clearInterval(countTimer);
     var start = Date.now();
-    el.textContent = '0';
-    var timer = setInterval(function () {
+    countTimer = setInterval(function () {
       var p = Math.min((Date.now() - start) / duration, 1);
       var eased = 1 - Math.pow(1 - p, 3);            // ease-out cubic
-      el.textContent = Math.round(eased * target).toLocaleString();
+      el.textContent = Math.round(from + eased * (to - from)).toLocaleString();
       if (p >= 1) {
-        clearInterval(timer);
-        el.textContent = target.toLocaleString();    // land exactly on the real number
+        clearInterval(countTimer);
+        el.textContent = to.toLocaleString();       // land exactly on the number
       }
     }, 33);                                           // ~30 fps
   }
@@ -407,55 +410,48 @@
     if (!cfg) return;
     var out = document.querySelector('[data-visitor-count]');   // present on home only
 
+    var SESSION_FLAG = 'arpCounted:' + cfg.key;       // per key, so a new key counts afresh
     var counted = false;
-    try { counted = cfg.perSession && sessionStorage.getItem('arpVisited') === '1'; } catch (e) {}
+    try { counted = cfg.perSession && sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) {}
 
     // Already counted this session and nothing to show here -> nothing to do.
     if (counted && !out) return;
 
-    // The visit is counted on load (the fetch below), but the count-up animation
-    // only plays once the counter scrolls into view — and only after the real
-    // number has arrived. We wait for BOTH before animating, so it's never missed.
-    var target = null, visible = false, played = false;
-    function playWhenReady() {
-      if (played || target === null || !visible) return;
-      played = true;
-      animateCount(out, target, 1600);
+    var base = cfg.base || 0;
+
+    // Best guess before the network answers: the last total this browser saw,
+    // or the base. Used to start counting the moment the number is on screen,
+    // so it never sits on "0" waiting for the service.
+    var cached = 0;
+    try { cached = parseInt(localStorage.getItem('arpVisitorTotal'), 10) || 0; } catch (e) {}
+    var guess = Math.max(cached, base);
+
+    var real = null, visible = false, shown = null;   // shown = number we're animating to
+    function render() {
+      if (!out || !visible) return;
+      var to = (real !== null) ? real : guess;
+      if (shown === to) return;
+      // First reveal counts up from 0; a later correction (guess -> real) is quick.
+      animateCount(out, shown === null ? 0 : shown, to, shown === null ? 1600 : 600);
+      shown = to;
     }
     if (out) {
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) { io.disconnect(); visible = true; playWhenReady(); }
+          if (entries[0].isIntersecting) { io.disconnect(); visible = true; render(); }
         }, { threshold: 0.5 });
         io.observe(out);
       } else {
-        visible = true;   // no observer support -> just play once the number is in
+        visible = true; render();
       }
     }
 
-    var base = cfg.base || 0;
-    var api = 'https://abacus.jasoncameron.dev';
-    var tail = '/' + encodeURIComponent(cfg.namespace) + '/' + encodeURIComponent(cfg.key);
-    var url = api + (counted ? '/get' : '/hit') + tail;   // /hit increments, /get just reads
+    var api = 'https://countapi.mileshilliard.com/api/v1';
+    var url = api + (counted ? '/get/' : '/hit/') + encodeURIComponent(cfg.key);  // hit = +1, get = read
 
-    // Last total this browser saw. If the counter service is slow or down we show
-    // this instead of dropping back to the base (or sitting on "0" forever).
-    var cached = 0;
-    try { cached = parseInt(localStorage.getItem('arpVisitorTotal'), 10) || 0; } catch (e) {}
-
-    // Give up on the service after a few seconds — a hung request must never
-    // leave the counter stuck on its placeholder.
+    // Never wait on the service for long — a hung request must not freeze anything.
     var ctrl = ('AbortController' in window) ? new AbortController() : null;
-    var timeout = setTimeout(function () { if (ctrl) ctrl.abort(); fail(); }, cfg.timeoutMs || 4000);
-    var settled = false;
-
-    function show(total) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timeout);
-      if (out) { target = total; playWhenReady(); }
-    }
-    function fail() { show(Math.max(cached, base)); }
+    var timeout = setTimeout(function () { if (ctrl) ctrl.abort(); }, cfg.timeoutMs || 4000);
 
     fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
       .then(function (r) {
@@ -463,15 +459,16 @@
         return r.json();
       })
       .then(function (d) {
+        clearTimeout(timeout);
         if (!d || typeof d.value !== 'number') throw new Error('bad response');
         if (!counted && cfg.perSession) {
-          try { sessionStorage.setItem('arpVisited', '1'); } catch (e) {}
+          try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
         }
-        var total = base + d.value;
-        try { localStorage.setItem('arpVisitorTotal', String(total)); } catch (e) {}
-        show(total);
+        real = base + d.value;
+        try { localStorage.setItem('arpVisitorTotal', String(real)); } catch (e) {}
+        render();
       })
-      .catch(fail);
+      .catch(function () { clearTimeout(timeout); /* keep showing the guess */ });
   }
 
   document.addEventListener('DOMContentLoaded', function () {

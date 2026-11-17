@@ -15,17 +15,18 @@ window.SITE = {
   // Replace the placeholder below with your real order inbox, then save.
   ordersEmail: 'Info@arppeptide.com',   // TODO: replace with your real order email
 
-  // Visitor counter shown in the footer. The number = base + real visits, kept
-  // in a free shared counter (Abacus API) so every visitor sees the same total.
-  //   base        -> the starting number (3000)
-  //   namespace/key -> where the count is stored (keep unique to this site)
+  // Visitor counter on the home page. The number = base + real visits, kept in
+  // a free shared counter (countapi.mileshilliard.com) so every visitor sees
+  // the same total.
+  //   base        -> the starting number. 4200 was the count when we moved off
+  //                  the old Abacus counter (it went offline in Nov 2026).
+  //   key         -> where the count is stored (keep unique to this site).
+  //                  Changing it starts a new counter from 0 (+ base).
   //   perSession  -> true: +1 once per visit; false: +1 on every page view
-  //   timeoutMs   -> how long to wait for the counter service before falling
-  //                  back to the last known number (or base)
+  //   timeoutMs   -> how long to wait for the counter service before giving up
   visitorCounter: {
-    base: 3000,
-    namespace: 'arppeptide-com',
-    key: 'visits',
+    base: 4200,
+    key: 'arppeptide-com-visits',
     perSession: true,
     timeoutMs: 4000
   }
