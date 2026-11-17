@@ -431,6 +431,8 @@
       if (!out || !visible) return;
       var to = (real !== null) ? real : guess;
       if (shown === to) return;
+      // Tell the CSS how long the final number is so the font shrinks to fit.
+      out.style.setProperty('--chars', to.toLocaleString().length);
       // First reveal counts up from 0; a later correction (guess -> real) is quick.
       animateCount(out, shown === null ? 0 : shown, to, shown === null ? 1600 : 600);
       shown = to;

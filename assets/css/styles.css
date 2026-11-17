@@ -310,10 +310,16 @@ h4 { font-size: 1.02rem; }
 .site-footer .copyright { margin: 14px 0 0; color: #5f5a4f; font-size: .8rem; }
 
 /* ---------- Visitor counter (home page) ------------------------------------ */
-.visitor-stat { text-align: center; padding: 14px 0; }
+.visitor-stat { text-align: center; padding: 14px 0; container-type: inline-size; }
 .visitor-stat__num {
   font-family: var(--font);
   font-size: clamp(2.8rem, 9vw, 5rem);
+  /* Shrink to fit long totals (e.g. 1,000,000,000,000 on a phone). --chars is
+     set by main.js to the length of the formatted number; ~0.6em per char is a
+     safe upper bound for these digits/commas. Older browsers ignore this line
+     and keep the size above. */
+  font-size: min(clamp(2.8rem, 9vw, 5rem), calc(100cqi / (var(--chars, 5) * 0.6)));
+  white-space: nowrap;
   font-weight: 800; line-height: 1; letter-spacing: -.02em;
   color: var(--gold);
   font-variant-numeric: tabular-nums;   /* keeps width steady while counting */
